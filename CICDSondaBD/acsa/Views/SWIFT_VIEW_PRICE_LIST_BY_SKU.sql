@@ -1,0 +1,17 @@
+﻿
+
+
+
+CREATE VIEW [acsa].[SWIFT_VIEW_PRICE_LIST_BY_SKU]
+AS
+SELECT *
+FROM acsa.SWIFT_PRICE_LIST_BY_SKU
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+﻿CREATE TABLE [acsa].[SWIFT_REGIONAL_USER] (
+    [LOGIN] VARCHAR (50) NULL
+);
+

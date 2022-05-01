@@ -1,0 +1,55 @@
+﻿-- =============================================
+-- Autor:				ppablo.loukota
+-- Fecha de Creacion: 	09-01-2016
+-- Description:			Valida si la tera tiene los batchs y las pallets localizadas
+
+/*
+-- Ejemplo de Ejecucion:
+				SELECT acsa.[SWIFT_FN_COUNT_PRODUCT_TASK] (8)
+*/
+-- =============================================
+
+
+CREATE FUNCTION [acsa].[SWIFT_FN_COUNT_PRODUCT_TASK]
+(
+	@TASK_ID INT 
+)
+ RETURNS @Totalproductos TABLE
+    (
+    DESCRIPTION_SKU [varchar](max)      NOT NULL,
+    TOTAL_DETALLE_RECEPCION      INT    NOT NULL,
+    TOTAL_INVENTARIO             INT    NOT NULL
+    )
+AS
+BEGIN
+
+
+	DECLARE @QUANT_COU INT = 0;
+	DECLARE @QUANT_GEN INT = 0;
+
+	INSERT @Totalproductos
+    SELECT RD.[DESCRIPTION_SKU],SUM(RD.[SCANNED]) AS TOTAL_DETALLE_RECEPCION,
+	
+	(SELECT SUM(IV.[ON_HAND]) AS TOTAL_INV
+	FROM [acsa].[SWIFT_PALLET] AS PA
+	INNER JOIN [acsa].[SWIFT_BATCH] AS BT ON (PA.[BATCH_ID] = BT.[BATCH_ID]) 
+	INNER JOIN [acsa].[SWIFT_TASKS] AS TS ON (PA.[TASK_ID] = TS.[TASK_ID]) 
+	INNER JOIN [acsa].[SWIFT_VIEW_ALL_SKU] AS SU ON (BT.[SKU] = SU.[SKU]) 
+	INNER JOIN [acsa].[SWIFT_RECEPTION_DETAIL] AS RD ON (RD.[CODE_SKU] = SU.[CODE_SKU]) 
+	INNER JOIN [acsa].[SWIFT_INVENTORY] AS IV ON (IV.[SKU] = SU.[CODE_SKU]) 
+	WHERE TS.[TASK_ID] = @TASK_ID
+	GROUP BY IV.[SKU_DESCRIPTION]) AS TOTAL_INVENTARIO
+
+	
+	FROM [acsa].[SWIFT_PALLET] AS PA
+	INNER JOIN [acsa].[SWIFT_BATCH] AS BT ON (PA.[BATCH_ID] = BT.[BATCH_ID]) 
+	INNER JOIN [acsa].[SWIFT_TASKS] AS TS ON (PA.[TASK_ID] = TS.[TASK_ID]) 
+	INNER JOIN [acsa].[SWIFT_VIEW_ALL_SKU] AS SU ON (BT.[SKU] = SU.[SKU]) 
+	INNER JOIN [acsa].[SWIFT_RECEPTION_DETAIL] AS RD ON (RD.[CODE_SKU] = SU.[CODE_SKU]) 
+	WHERE TS.[TASK_ID] = @TASK_ID
+	GROUP BY RD.[DESCRIPTION_SKU]
+	
+	
+	RETURN
+
+END

@@ -1,0 +1,8 @@
+﻿CREATE VIEW [acsa].[SWIFT_VIEW_ALL_ROUTE]
+
+AS
+
+SELECT     [acsa].SWIFT_ROUTES.*
+
+FROM         [acsa].SWIFT_ROUTES
+

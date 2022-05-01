@@ -1,0 +1,58 @@
+﻿CREATE TABLE [dbo].[SWIFT_USER] (
+    [CORRELATIVE]            INT           IDENTITY (1, 1) NOT NULL,
+    [LOGIN]                  VARCHAR (50)  NULL,
+    [NAME_USER]              VARCHAR (50)  NULL,
+    [TYPE_USER]              VARCHAR (50)  NULL,
+    [PASSWORD]               VARCHAR (50)  NULL,
+    [CODE_ENTERPRISE]        VARCHAR (50)  NULL,
+    [USER_CORRELATIVE]       INT           NULL,
+    [LAST_UPDATE]            DATETIME      NULL,
+    [LAST_UPDATE_BY]         VARCHAR (50)  NULL,
+    [IMAGE]                  VARCHAR (MAX) NULL,
+    [SELLER_ROUTE]           VARCHAR (50)  NULL,
+    [RELATED_SELLER]         VARCHAR (50)  NULL,
+    [USER_TYPE]              VARCHAR (50)  NULL,
+    [DEFAULT_WAREHOUSE]      VARCHAR (50)  NULL,
+    [USER_ROLE]              NUMERIC (18)  NULL,
+    [PRESALE_WAREHOUSE]      VARCHAR (50)  NULL,
+    [ROUTE_RETURN_WAREHOUSE] VARCHAR (50)  NULL,
+    [USE_PACK_UNIT]          INT           CONSTRAINT [DF__SWIFT_USE__USE_P__08AB2BC8] DEFAULT ((0)) NULL,
+    [DISTRIBUTION_CENTER_ID] INT           NULL,
+    [CODE_PRICE_LIST]        VARCHAR (25)  NULL,
+    [DEVICE_ID]              VARCHAR (50)  NULL,
+    [VALIDATION_TYPE]        VARCHAR (50)  NULL,
+    [SONDA_CORE_VERSION]     VARCHAR (50)  NULL,
+    [LAST_LOGIN_DATETIME]    DATETIME      CONSTRAINT [DF__SWIFT_USE__LAST___099F5001] DEFAULT (getdate()) NULL,
+    CONSTRAINT [FK__SWIFT_USE__DISTR__44B78ADC] FOREIGN KEY ([DISTRIBUTION_CENTER_ID]) REFERENCES [acsa].[SWIFT_DISTRIBUTION_CENTER] ([DISTRIBUTION_CENTER_ID])
+);
+
+
+GO
+GRANT ALTER
+    ON OBJECT::[dbo].[SWIFT_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT CONTROL
+    ON OBJECT::[dbo].[SWIFT_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[SWIFT_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[SWIFT_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SWIFT_USER] TO [sonda]
+    AS [dbo];
+

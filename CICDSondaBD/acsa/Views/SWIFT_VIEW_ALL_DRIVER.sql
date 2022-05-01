@@ -1,0 +1,12 @@
+﻿CREATE VIEW [acsa].[SWIFT_VIEW_ALL_DRIVER]
+
+AS
+
+SELECT     acsa.SWIFT_DRIVERS.*
+
+FROM         acsa.SWIFT_DRIVERS
+
+
+
+
+

@@ -1,0 +1,88 @@
+4/30/2022 5:05:50 PM	This log contains information about the import schema operation into project 'CICDSondaBD' on computer 'DESKTOP-QJQHJAB' by user 'walde'.
+4/30/2022 5:05:50 PM	Import of database schema has started.
+4/30/2022 5:05:58 PM	Gathering database credentials
+4/30/2022 5:05:58 PM	Gathering database options
+4/30/2022 5:05:58 PM	Gathering generic database scoped configuration option
+4/30/2022 5:05:58 PM	Gathering users
+4/30/2022 5:05:58 PM	Gathering roles
+4/30/2022 5:05:58 PM	Gathering application roles
+4/30/2022 5:05:58 PM	Gathering role memberships
+4/30/2022 5:05:58 PM	Gathering filegroups
+4/30/2022 5:05:58 PM	Gathering full-text catalogs
+4/30/2022 5:05:58 PM	Gathering assemblies
+4/30/2022 5:05:58 PM	Gathering certificates
+4/30/2022 5:05:58 PM	Gathering asymmetric keys
+4/30/2022 5:05:58 PM	Gathering symmetric keys
+4/30/2022 5:05:58 PM	Gathering encrypted symmetric keys
+4/30/2022 5:05:58 PM	Gathering schemas
+4/30/2022 5:05:58 PM	Gathering XML schema collections
+4/30/2022 5:05:58 PM	Gathering user-defined data types
+4/30/2022 5:05:58 PM	Gathering user-defined types
+4/30/2022 5:05:58 PM	Gathering table types
+4/30/2022 5:05:58 PM	Gathering unique keys for table types
+4/30/2022 5:05:58 PM	Gathering primary keys for table types
+4/30/2022 5:05:58 PM	Gathering indexes for table types
+4/30/2022 5:05:58 PM	Gathering check constraints for table types
+4/30/2022 5:05:58 PM	Gathering default constraints for table types
+4/30/2022 5:05:58 PM	Gathering partition functions
+4/30/2022 5:05:58 PM	Gathering partition schemes
+4/30/2022 5:05:58 PM	Gathering functions
+4/30/2022 5:06:00 PM	Gathering encrypted functions
+4/30/2022 5:06:00 PM	Gathering aggregates
+4/30/2022 5:06:00 PM	Gathering procedures
+4/30/2022 5:07:09 PM	Gathering encrypted procedures
+4/30/2022 5:07:09 PM	Gathering tables
+4/30/2022 5:07:15 PM	Gathering primary keys
+4/30/2022 5:07:16 PM	Gathering unique constraints
+4/30/2022 5:07:16 PM	Gathering foreign keys
+4/30/2022 5:07:17 PM	Gathering default constraints
+4/30/2022 5:07:17 PM	Gathering check constraints
+4/30/2022 5:07:17 PM	Gathering views
+4/30/2022 5:07:18 PM	Gathering encrypted views
+4/30/2022 5:07:18 PM	Gathering indexes
+4/30/2022 5:07:19 PM	Gathering statistics
+4/30/2022 5:07:19 PM	Gathering full-text index stoplists
+4/30/2022 5:07:19 PM	Gathering search property lists
+4/30/2022 5:07:19 PM	Gathering search properties
+4/30/2022 5:07:19 PM	Gathering full-text indexes
+4/30/2022 5:07:19 PM	Gathering column store indexes
+4/30/2022 5:07:19 PM	Gathering spatial indexes
+4/30/2022 5:07:19 PM	Gathering XML indexes
+4/30/2022 5:07:19 PM	Gathering Selective XML indexes
+4/30/2022 5:07:19 PM	Gathering encrypted triggers
+4/30/2022 5:07:19 PM	Gathering triggers
+4/30/2022 5:07:19 PM	Gathering encrypted and clr ddl triggers
+4/30/2022 5:07:19 PM	Gathering ddl triggers
+4/30/2022 5:07:19 PM	Creating edge constraints
+4/30/2022 5:07:19 PM	Gathering synonyms
+4/30/2022 5:07:19 PM	Gathering defaults
+4/30/2022 5:07:19 PM	Gathering data constraint uddt bindings
+4/30/2022 5:07:19 PM	Gathering rules
+4/30/2022 5:07:19 PM	Gathering data constraint uddt bindings
+4/30/2022 5:07:19 PM	Gathering message types
+4/30/2022 5:07:19 PM	Gathering queues
+4/30/2022 5:07:19 PM	Gathering contracts
+4/30/2022 5:07:19 PM	Gathering services
+4/30/2022 5:07:19 PM	Gathering event notifications
+4/30/2022 5:07:19 PM	Gathering remote service bindings
+4/30/2022 5:07:19 PM	Gathering broker priorities
+4/30/2022 5:07:19 PM	Gathering signatures
+4/30/2022 5:07:19 PM	Gathering data compression options
+4/30/2022 5:07:19 PM	Gathering sequence types
+4/30/2022 5:07:19 PM	Gathering security policies
+4/30/2022 5:07:19 PM	Gather column encryption keys
+4/30/2022 5:07:19 PM	Gathering column master keys
+4/30/2022 5:07:19 PM	Gathering external data sources
+4/30/2022 5:07:19 PM	Gathering external file formats
+4/30/2022 5:07:19 PM	Gathering external tables
+4/30/2022 5:07:20 PM	Gathering database permissions
+4/30/2022 5:07:20 PM	Gathering extended properties
+4/30/2022 5:07:20 PM	Gathering assemblies
+4/30/2022 5:07:21 PM	Gathering credentials
+4/30/2022 5:07:21 PM	Gathering logins
+4/30/2022 5:07:21 PM	Gathering server audits
+4/30/2022 5:07:23 PM	Scanning project for duplicate elements
+4/30/2022 5:07:26 PM	Finished duplicate element processing
+4/30/2022 5:07:33 PM	Finished importing database.
+4/30/2022 5:07:33 PM	A summary of the import was saved to the following location: D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\Import Schema Logs\CICDSondaBD_20220430110550.log
+4/30/2022 5:07:33 PM	Click Finish to continue...

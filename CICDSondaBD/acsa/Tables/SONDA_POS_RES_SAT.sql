@@ -1,0 +1,27 @@
+﻿CREATE TABLE [acsa].[SONDA_POS_RES_SAT] (
+    [ROWPK]                                   INT           IDENTITY (1, 1) NOT NULL,
+    [AUTH_ID]                                 VARCHAR (50)  NOT NULL,
+    [AUTH_ASSIGNED_DATETIME]                  DATETIME      NULL,
+    [AUTH_POST_DATETIME]                      DATETIME      NULL,
+    [AUTH_ASSIGNED_BY]                        VARCHAR (100) NULL,
+    [AUTH_DOC_FROM]                           INT           NULL,
+    [AUTH_DOC_TO]                             INT           NULL,
+    [AUTH_SERIE]                              VARCHAR (100) NOT NULL,
+    [AUTH_DOC_TYPE]                           VARCHAR (100) NULL,
+    [AUTH_ASSIGNED_TO]                        VARCHAR (100) NULL,
+    [AUTH_CURRENT_DOC]                        INT           NULL,
+    [AUTH_LIMIT_DATETIME]                     DATETIME      NULL,
+    [AUTH_STATUS]                             VARCHAR (15)  NULL,
+    [AUTH_BRANCH_NAME]                        VARCHAR (50)  NULL,
+    [AUTH_BRANCH_ADDRESS]                     VARCHAR (150) NULL,
+    [AUTH_TYPE]                               VARCHAR (150) CONSTRAINT [DF_SONDA_POS_RES_SAT_AUTH_TYPE] DEFAULT ('HANDHELD') NULL,
+    [BRANCH_ADDRESS2]                         VARCHAR (30)  NULL,
+    [BRANCH_ADDRESS3]                         VARCHAR (30)  NULL,
+    [BRANCH_ADDRESS4]                         VARCHAR (30)  NULL,
+    [FEL_DOCUMENT_TYPE_CLASSIFICATION_ID]     INT           NULL,
+    [FEL_DOCUMENT_TYPE]                       VARCHAR (100) NULL,
+    [FEL_STABLISHMENT_CODE_CLASSIFICATION_ID] INT           NULL,
+    [FEL_STABLISHMENT_CODE]                   INT           NULL,
+    CONSTRAINT [PK_SONDA_POS_RES_SAT] PRIMARY KEY CLUSTERED ([AUTH_ID] ASC, [AUTH_SERIE] ASC)
+);
+

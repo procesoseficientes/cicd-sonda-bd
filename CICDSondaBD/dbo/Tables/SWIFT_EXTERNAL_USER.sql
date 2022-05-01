@@ -1,0 +1,44 @@
+﻿CREATE TABLE [dbo].[SWIFT_EXTERNAL_USER] (
+    [CORRELATIVE]       INT           NOT NULL,
+    [CODE_ENTERPRISE]   VARCHAR (50)  NULL,
+    [NAME_ENTERPRISE]   VARCHAR (50)  NULL,
+    [NUMBER_OF_USERS]   INT           NULL,
+    [CONNECTION_STRING] VARCHAR (150) NULL,
+    [LAST_UPDATE]       DATETIME      NULL,
+    [LAST_UPDATE_BY]    VARCHAR (50)  NULL,
+    [USER]              VARCHAR (50)  NULL,
+    [PASS]              VARCHAR (50)  NULL,
+    [IMAGE]             VARCHAR (MAX) NULL,
+    CONSTRAINT [PK__SWIFT_EX__6C6DD952B8763335] PRIMARY KEY CLUSTERED ([CORRELATIVE] ASC)
+);
+
+
+GO
+GRANT ALTER
+    ON OBJECT::[dbo].[SWIFT_EXTERNAL_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT CONTROL
+    ON OBJECT::[dbo].[SWIFT_EXTERNAL_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT DELETE
+    ON OBJECT::[dbo].[SWIFT_EXTERNAL_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT INSERT
+    ON OBJECT::[dbo].[SWIFT_EXTERNAL_USER] TO [sonda]
+    AS [dbo];
+
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[SWIFT_EXTERNAL_USER] TO [sonda]
+    AS [dbo];
+

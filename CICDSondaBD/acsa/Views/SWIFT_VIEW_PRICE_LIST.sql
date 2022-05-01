@@ -1,0 +1,12 @@
+﻿
+
+CREATE VIEW [acsa].[SWIFT_VIEW_PRICE_LIST]
+AS
+SELECT *
+FROM acsa.SWIFT_PRICE_LIST
+
+
+
+
+
+

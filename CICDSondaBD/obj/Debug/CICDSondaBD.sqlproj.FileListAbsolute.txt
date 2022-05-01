@@ -1,0 +1,14 @@
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDSondaBD.dacpac
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDSondaBD.dll
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDSondaBD.pdb
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDInterfacesBD.dll
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDInterfacesBD.pdb
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\bin\Debug\CICDInterfacesBD.dacpac
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\CICDSondaBD.sqlproj.AssemblyReference.cache
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\Model.xml
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\refactor.xml
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\postdeploy.sql
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\predeploy.sql
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\CICDSondaBD.sqlproj.CopyComplete
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\CICDSondaBD.dll
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDSondaBD\obj\Debug\CICDSondaBD.pdb

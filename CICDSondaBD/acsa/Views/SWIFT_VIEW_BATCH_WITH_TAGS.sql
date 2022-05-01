@@ -1,0 +1,26 @@
+﻿
+
+
+CREATE VIEW [acsa].[SWIFT_VIEW_BATCH_WITH_TAGS]
+AS
+SELECT DISTINCT
+      A.[BATCH_ID]
+     ,A.[EXP_DATE]
+     ,SUBSTRING(CAST((
+          SELECT DISTINCT (SELECT [TAG_VALUE_TEXT] FROM [acsa].[SWIFT_TAGS] AS X WHERE X.[TAG_COLOR] = T.TAG_COLOR) + ', '
+          FROM [acsa].[SWIFT_TAGS_BY_BATCH] T
+          WHERE A.BATCH_ID = T.BATCH_ID
+          FOR XML PATH(''))as varchar(max)),1,LEN(CAST((
+          SELECT DISTINCT (SELECT [TAG_VALUE_TEXT] FROM [acsa].[SWIFT_TAGS] AS X WHERE X.[TAG_COLOR] = T.TAG_COLOR) + ', '
+          FROM [acsa].[SWIFT_TAGS_BY_BATCH] T
+          WHERE A.BATCH_ID = T.BATCH_ID
+          FOR XML PATH(''))as varchar(max))) -1) AS TAGS 
+FROM [acsa].[SWIFT_BATCHES] A
+
+
+
+
+
+
+
+

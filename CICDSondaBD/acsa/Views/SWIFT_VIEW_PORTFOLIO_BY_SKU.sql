@@ -1,0 +1,17 @@
+﻿
+
+
+
+CREATE VIEW [acsa].[SWIFT_VIEW_PORTFOLIO_BY_SKU]
+AS
+SELECT *
+FROM acsa.SWIFT_PORTFOLIO_BY_SKU
+
+
+
+
+
+
+
+
+

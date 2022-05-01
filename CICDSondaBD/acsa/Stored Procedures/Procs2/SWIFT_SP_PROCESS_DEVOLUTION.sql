@@ -1,0 +1,133 @@
+﻿-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [acsa].[SWIFT_SP_PROCESS_DEVOLUTION]
+	
+	@TASK_ID INT
+	, @SKU_CODE VARCHAR(50)
+	, @CODE_LOCATION VARCHAR(50)
+	, @SERIE VARCHAR(150)
+	, @QTY FLOAT
+	, @HANDLE_SERIAL VARCHAR(10)
+	, @OPERATOR_ID VARCHAR(25)
+	, @pResult VARCHAR(250) OUTPUT
+AS
+BEGIN TRY
+BEGIN
+
+	DECLARE @TXNSID INT;
+	DECLARE @SKU_DESCRIPTION	VARCHAR(MAX)
+			,@HEADER_REFERENCE	int
+	SELECT @SKU_DESCRIPTION = (SELECT [DESCRIPTION_SKU] FROM [acsa].[SWIFT_VIEW_ALL_SKU] WHERE [CODE_SKU] = @SKU_CODE)
+	SELECT @HEADER_REFERENCE = [PICKING_NUMBER] FROM [acsa].[SWIFT_TASKS] WHERE [TASK_ID] = @TASK_ID
+
+
+    BEGIN TRAN t1
+		BEGIN
+			INSERT INTO [acsa].[SWIFT_TXNS]
+				( 
+				[SAP_REFERENCE]
+				, [TASK_SOURCE_ID]
+				, [TXN_TYPE]
+				, [TXN_DESCRIPTION]
+				, [TXN_CATEGORY]
+				, [TXN_CREATED_STAMP]
+				, [TXN_OPERATOR_ID]
+				, [TXN_OPERATOR_NAME]
+				, [TXN_CODE_SKU]
+				, [TXN_DESCRIPTION_SKU]
+				, [TXN_QTY]
+				, [HEADER_REFERENCE]	
+				, [TXN_SERIE]										
+				)
+			VALUES(
+				(SELECT [SAP_REFERENCE] FROM [acsa].[SWIFT_TASKS] WHERE [TASK_ID] = @TASK_ID)
+				, @TASK_ID
+				, 'REALLOC'
+				, 'ALMACENAJE DESDE Devolucion'
+				, NULL--'PO'
+				, GetDate()
+				, @OPERATOR_ID
+				, (SELECT [NAME_USER] FROM [acsa].[USERS] WHERE [LOGIN] = @OPERATOR_ID)
+				, @SKU_CODE
+				, @SKU_DESCRIPTION
+				, @QTY
+				, NULL--@HEADER_REFERENCE
+				, @SERIE
+				)
+			SELECT @TXNSID = SCOPE_IDENTITY()
+
+			IF @HANDLE_SERIAL = 'SI' BEGIN
+
+				UPDATE [acsa].[SWIFT_TXNS] SET TXN_SERIE = NULL
+				WHERE HEADER_REFERENCE = @HEADER_REFERENCE AND TXN_CODE_SKU = @SKU_CODE AND TXN_TYPE = 'PICKING' AND TXN_SERIE = @SERIE
+
+				DELETE FROM [acsa].[SWIFT_QR_CODE_LABEL]
+				WHERE CODE_SKU = @SKU_CODE AND SERIE = @SERIE
+
+				INSERT INTO [acsa].[SWIFT_TXNS_SERIES]
+					(
+					[TXN_ID]
+					, [TXN_CODE_SKU]
+					, [TXN_DESCRIPTION_SKU]
+					, [TXN_SERIE]					
+					)
+				VALUES(
+					@TXNSID
+					, @SKU_CODE
+					, @SKU_DESCRIPTION
+					, @SERIE
+					)
+
+				
+			END
+
+			INSERT INTO [acsa].[SWIFT_INVENTORY]
+				(				
+				[WAREHOUSE]
+				, [LOCATION]
+				, [SKU]
+				, [SKU_DESCRIPTION]
+				, [ON_HAND]				
+				, [LAST_UPDATE]
+				, [LAST_UPDATE_BY]
+				, [TXN_ID]
+				, [SERIAL_NUMBER]
+				)
+			VALUES(
+				(SELECT [CODE_WAREHOUSE] FROM [acsa].[SWIFT_LOCATIONS] WHERE [CODE_LOCATION] = @CODE_LOCATION)
+				, @CODE_LOCATION
+				, @SKU_CODE
+				, @SKU_DESCRIPTION
+				, @QTY
+				, GETDATE()
+				, @OPERATOR_ID
+				, null--@TXNSID
+				, @SERIE
+				)
+		END
+
+		UPDATE [acsa].[SWIFT_PICKING_DETAIL] 
+		SET [SCANNED] = ([SCANNED] - @QTY)
+			,[DIFFERENCE] = ([DIFFERENCE] + @QTY)
+		WHERE PICKING_HEADER = @HEADER_REFERENCE AND CODE_SKU = @SKU_CODE
+
+		IF @@error = 0 BEGIN
+			SELECT @pResult = 'OK'
+			COMMIT TRAN t1
+		END		
+		ELSE BEGIN
+			ROLLBACK TRAN t1
+			SELECT	@pResult	= ERROR_MESSAGE()
+		END
+END
+END TRY
+BEGIN CATCH
+     ROLLBACK TRAN t1
+	 SELECT  -1 as Resultado , ERROR_MESSAGE() Mensaje ,  @@ERROR Codigo 
+END CATCH
+
+
+

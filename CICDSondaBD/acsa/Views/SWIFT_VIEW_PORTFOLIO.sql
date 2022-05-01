@@ -1,0 +1,13 @@
+﻿
+
+CREATE VIEW [acsa].[SWIFT_VIEW_PORTFOLIO]
+AS
+SELECT *
+FROM acsa.SWIFT_PORTFOLIO
+
+
+
+
+
+
+
