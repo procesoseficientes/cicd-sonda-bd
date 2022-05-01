@@ -1,0 +1,3 @@
+﻿CREATE USER [ACSAR]
+    WITH DEFAULT_SCHEMA = [acsa];
+

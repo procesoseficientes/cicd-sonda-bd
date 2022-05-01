@@ -1,0 +1,12 @@
+﻿
+--use SWIFT_INTERFACES;
+
+CREATE VIEW [acsa].[ERP_ORDER_HEADER]
+as 
+SELECT *
+FROM  [acsa].[SWIFT_ERP_ORDER_HEADER]
+
+
+
+
+

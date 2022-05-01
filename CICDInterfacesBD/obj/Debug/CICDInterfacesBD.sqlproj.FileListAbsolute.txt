@@ -1,0 +1,10 @@
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\bin\Debug\CICDInterfacesBD.dacpac
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\bin\Debug\CICDInterfacesBD.dll
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\bin\Debug\CICDInterfacesBD.pdb
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\CICDInterfacesBD.sqlproj.AssemblyReference.cache
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\Model.xml
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\refactor.xml
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\postdeploy.sql
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\predeploy.sql
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\CICDInterfacesBD.dll
+D:\Repos\ProcesosRepo\cicd-sonda-bd\CICDInterfacesBD\obj\Debug\CICDInterfacesBD.pdb

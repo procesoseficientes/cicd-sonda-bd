@@ -1,0 +1,11 @@
+﻿
+CREATE VIEW [acsa].[ERP_ORDER_DETAIL]
+as 
+SELECT *
+FROM [acsa].[SWIFT_ERP_ORDER_DETAIL]
+
+
+
+
+
+

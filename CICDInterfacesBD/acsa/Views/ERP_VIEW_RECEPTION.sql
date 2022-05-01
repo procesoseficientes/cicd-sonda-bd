@@ -1,0 +1,11 @@
+﻿
+CREATE VIEW [acsa].[ERP_VIEW_RECEPTION]
+as 
+SELECT *
+FROM [acsa].[SWIFT_ERP_RECEPTION]
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+﻿
+
+CREATE VIEW [acsa].[ERP_VIEW_PICKING]
+AS
+SELECT *
+FROM [acsa].[SWIFT_ERP_PICKING]
+
+
+
+
+
+

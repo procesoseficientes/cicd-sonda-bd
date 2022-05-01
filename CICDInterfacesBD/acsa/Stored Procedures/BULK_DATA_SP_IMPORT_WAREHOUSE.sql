@@ -1,0 +1,49 @@
+﻿-- =============================================
+-- Autor:				alberto.ruiz
+-- Fecha de Creacion: 	29-02-2016
+-- Description:			SP que importa bodegas
+
+/*
+-- Ejemplo de Ejecucion:
+				-- 
+				EXEC [acsa].[BULK_DATA_SP_IMPORT_WAREHOUSE]
+*/
+-- =============================================
+CREATE PROCEDURE [acsa].[BULK_DATA_SP_IMPORT_WAREHOUSE]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	--
+	MERGE [acsa].[SWIFT_ERP_WAREHOUSE] SWI 
+	USING ( SELECT * FROM  [SWIFT_INTERFACES_ONLINE_R].[acsa].[ERP_VIEW_WAREHOUSE]) WVH 
+	ON SWI.[CODE_WAREHOUSE] = WVH.[CODE_WAREHOUSE] 
+	WHEN MATCHED THEN 
+	UPDATE 
+		SET SWI.[DESCRIPTION_WAREHOUSE]   =  WVH.[DESCRIPTION]
+		   ,SWI.[WEATHER_WAREHOUSE]       =  WVH.[WEATHER_WAREHOUSE]
+		   ,SWI.[STATUS_WAREHOUSE]        =  WVH.[STATUS_WAREHOUSE]
+		   ,SWI.[LAST_UPDATE]             =  WVH.[LAST_UPDATE]
+		   ,SWI.[LAST_UPDATE_BY]          =  WVH.[LAST_UPDATE_BY]
+		   ,SWI.[IS_EXTERNAL]             =  WVH.[IS_EXTERNAL]
+	WHEN NOT MATCHED THEN 
+	INSERT (
+		[CODE_WAREHOUSE]
+		,[DESCRIPTION_WAREHOUSE]
+		,[WEATHER_WAREHOUSE]
+		,[STATUS_WAREHOUSE]
+		,[LAST_UPDATE]
+		,[LAST_UPDATE_BY]
+		,[IS_EXTERNAL]
+	) 
+	VALUES (
+		WVH.[CODE_WAREHOUSE]
+		,WVH.[DESCRIPTION]
+		,WVH.[WEATHER_WAREHOUSE]
+		,WVH.[STATUS_WAREHOUSE]
+		,WVH.[LAST_UPDATE]
+		,WVH.[LAST_UPDATE_BY]
+		,WVH.[IS_EXTERNAL]
+	 );
+END
+
+
