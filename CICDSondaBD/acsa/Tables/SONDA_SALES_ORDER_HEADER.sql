@@ -11,6 +11,7 @@
     [IMAGE_1]                    VARCHAR (MAX)   NULL,
     [IMAGE_2]                    VARCHAR (MAX)   NULL,
     [IMAGE_3]                    VARCHAR (MAX)   NULL,
+    [IMAGE_4]                    VARCHAR (MAX)   NULL,
     [DEVICE_BATTERY_FACTOR]      INT             CONSTRAINT [DF_SONDA_SALES_ORDER_HEADER_DEVICE_BATTERY_FACTOR] DEFAULT ((0)) NULL,
     [VOID_DATETIME]              DATETIME        NULL,
     [VOID_REASON]                VARCHAR (25)    NULL,
