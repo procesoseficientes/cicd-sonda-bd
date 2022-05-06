@@ -9,8 +9,8 @@ SELECT  @SQL = '
 SELECT t.TXN_ID as TransactionId,cast('+@DOC_ENTRY+' as varchar) as DocEntry,
   cast( t.SAP_REFERENCE as int) AS DocNum,
   t.TXN_QTY AS Quantity,
-  t.TXN_CODE_SKU COLLATE SQL_Latin1_General_CP1_CI_AS AS ItemCode,
-  so.ObjType COLLATE SQL_Latin1_General_CP1_CI_AS AS ObjType,
+  t.TXN_CODE_SKU  AS ItemCode,
+  so.ObjType  AS ObjType,
   ISNULL(so.LineNum, -1) AS LineNum
 FROM [acsa].SWIFT_TXNS AS t
 LEFT OUTER JOIN

@@ -117,7 +117,7 @@ BEGIN
 
     SELECT
 
-      @Start = PATINDEX('%[^a-zA-Z]["]%', @JSON COLLATE SQL_Latin1_General_CP850_BIN);--next delimited string
+      @Start = PATINDEX('%[^a-zA-Z]["]%', @JSON );--next delimited string
 
     IF @Start = 0
       BREAK --no more so drop through the WHILE loop
@@ -128,7 +128,7 @@ BEGIN
 
       SET @Start = @Start + 1;
 
-      SET @end = PATINDEX('%[^\]["]%', RIGHT(@JSON, LEN(@JSON + '|') - @Start) COLLATE SQL_Latin1_General_CP850_BIN);
+      SET @end = PATINDEX('%[^\]["]%', RIGHT(@JSON, LEN(@JSON + '|') - @Start) );
 
     END
 
@@ -200,7 +200,7 @@ BEGIN
 
         --find the next hex escape sequence
 
-        @Escape = PATINDEX('%\x[0-9a-f][0-9a-f][0-9a-f][0-9a-f]%', @token COLLATE SQL_Latin1_General_CP850_BIN)
+        @Escape = PATINDEX('%\x[0-9a-f][0-9a-f][0-9a-f][0-9a-f]%', @token )
 
       IF @Escape > 0 --if there is one
 
@@ -261,7 +261,7 @@ BEGIN
     --find the first object or list by looking for the open bracket
 
     SELECT
-      @FirstObject = PATINDEX('%[{[[]%', @JSON COLLATE SQL_Latin1_General_CP850_BIN)--object or array
+      @FirstObject = PATINDEX('%[{[[]%', @JSON )--object or array
 
     IF @FirstObject = 0
       BREAK
@@ -304,7 +304,7 @@ BEGIN
       SELECT
         @NextOpenDelimiter = PATINDEX('%[{[[]%',
 
-        RIGHT(@JSON, @lenJSON - @OpenDelimiter) COLLATE SQL_Latin1_General_CP850_BIN)--object
+        RIGHT(@JSON, @lenJSON - @OpenDelimiter) )--object
 
       IF @NextOpenDelimiter = 0
 
@@ -350,7 +350,7 @@ BEGIN
 
       '@' + @Type + CONVERT(NVARCHAR(5), @parent_ID))
 
-    WHILE (PATINDEX('%[A-Za-z0-9@+.e]%', @Contents COLLATE SQL_Latin1_General_CP850_BIN)) <> 0
+    WHILE (PATINDEX('%[A-Za-z0-9@+.e]%', @Contents )) <> 0
 
     BEGIN
 
@@ -364,11 +364,11 @@ BEGIN
          ,@end = CHARINDEX(':', ' ' + @Contents)--if there is anything, it will be a string-based name.
 
         SELECT
-          @Start = PATINDEX('%[^A-Za-z@][@]%', ' ' + @Contents COLLATE SQL_Latin1_General_CP850_BIN)--AAAAAAAA
+          @Start = PATINDEX('%[^A-Za-z@][@]%', ' ' + @Contents )--AAAAAAAA
 
         SELECT
           @token = SUBSTRING(' ' + @Contents, @Start + 1, @end - @Start - 1)
-         ,@EndOfName = PATINDEX('%[0-9]%', @token COLLATE SQL_Latin1_General_CP850_BIN)
+         ,@EndOfName = PATINDEX('%[0-9]%', @token )
          ,@param = RIGHT(@token, LEN(@token) - @EndOfName + 1)
 
         SELECT
@@ -397,13 +397,13 @@ BEGIN
       IF @end = 0
 
         SELECT
-          @end = PATINDEX('%[A-Za-z0-9@+.e][^A-Za-z0-9@+.e]%', @Contents + ' ' COLLATE SQL_Latin1_General_CP850_BIN)
+          @end = PATINDEX('%[A-Za-z0-9@+.e][^A-Za-z0-9@+.e]%', @Contents + ' ' )
 
           + 1
 
       SELECT
 
-        @Start = PATINDEX('%[^A-Za-z0-9@+.e][A-Za-z0-9@+.e]%', ' ' + @Contents COLLATE SQL_Latin1_General_CP850_BIN)
+        @Start = PATINDEX('%[^A-Za-z0-9@+.e][A-Za-z0-9@+.e]%', ' ' + @Contents )
 
       --select @start,@end, LEN(@contents+'|'), @contents 
 
@@ -483,7 +483,7 @@ BEGIN
 
       ELSE
 
-      IF PATINDEX('%[^0-9]%', @value COLLATE SQL_Latin1_General_CP850_BIN) > 0
+      IF PATINDEX('%[^0-9]%', @value ) > 0
 
         INSERT INTO @hierarchy (NAME, sequenceNo, parent_ID, StringValue, ValueType)
 
