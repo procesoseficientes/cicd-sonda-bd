@@ -2945,10 +2945,7 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_REPORT_MANIFEST.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+   
     <Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_ROLE_BY_QUERY_LIST.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
