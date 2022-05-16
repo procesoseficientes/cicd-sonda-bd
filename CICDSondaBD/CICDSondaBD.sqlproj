@@ -5255,10 +5255,10 @@
     <Build Include="acsa\Stored Procedures\Procs1\SWIFT_SP_GET_TOP5_CUSTOMERS_NEW_all.sql">
       <AnsiNulls>On</AnsiNulls>
     </Build>
-    <Build Include="acsa\Stored Procedures\Procs1\SWIFT_SP_GET_TOP5_INVOICE_HEADER.sql">
+    <!--<Build Include="acsa\Stored Procedures\Procs1\SWIFT_SP_GET_TOP5_INVOICE_HEADER.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+    </Build>-->
     <Build Include="acsa\Stored Procedures\Procs1\SWIFT_SP_GET_TOP5_INVOICE_PAYMENTS.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
