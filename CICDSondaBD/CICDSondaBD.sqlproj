@@ -1603,11 +1603,11 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Views\SWIFT_VIEW_PROVIDERS.sql">
+    <!--<Build Include="acsa\Views\SWIFT_VIEW_PROVIDERS.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <!--<Build Include="acsa\Views\SWIFT_VIEW_SBO_ORDER_DETAIL.sql">
+    <Build Include="acsa\Views\SWIFT_VIEW_SBO_ORDER_DETAIL.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>-->
