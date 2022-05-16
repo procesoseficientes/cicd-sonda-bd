@@ -6217,10 +6217,10 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_UPDATE_CUSTOMER_GPS_INFO.sql">
+    <!--<Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_UPDATE_CUSTOMER_GPS_INFO.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+    </Build>-->
     <Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_UPDATE_CUSTOMER_SEND_TO_SAP.sql">
       <AnsiNulls>On</AnsiNulls>
     </Build>
