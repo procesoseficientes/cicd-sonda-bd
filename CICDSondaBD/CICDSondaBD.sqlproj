@@ -1360,7 +1360,7 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Views\SWIFT_VIEW_SBO_ORDER_HEADER.sql">
+    <!--<Build Include="acsa\Views\SWIFT_VIEW_SBO_ORDER_HEADER.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
@@ -1371,7 +1371,7 @@
     <Build Include="acsa\Views\SWIFT_VIEW_SBO_PURCHASE_ORDER_HEADER.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+    </Build>-->
     <Build Include="acsa\Views\SWIFT_VIEW_ERP_WAREHOUSE.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
