@@ -2970,14 +2970,14 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_STATUS_INVENTORY_FOR_PICKING.sql">
+    <!--<Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_STATUS_INVENTORY_FOR_PICKING.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_STOCK_FOR_PICKING.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+    </Build>-->
     <Build Include="acsa\Stored Procedures\Procs1\SWIFT_GET_ULTIMATE_VALUE_IN_HEADER.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
