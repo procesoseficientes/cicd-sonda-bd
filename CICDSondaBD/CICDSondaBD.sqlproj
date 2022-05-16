@@ -5965,10 +5965,10 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_POST_CUSTOMER_NEW_TO_ERP_OLD.sql">
+    <!--<Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_POST_CUSTOMER_NEW_TO_ERP_OLD.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
+    </Build>-->
     <Build Include="acsa\Stored Procedures\Procs2\SWIFT_SP_POST_SALES_ORDER_TO_ERP.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
