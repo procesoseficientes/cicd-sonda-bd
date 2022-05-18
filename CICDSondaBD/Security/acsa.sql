@@ -1,3 +1,3 @@
 ﻿CREATE SCHEMA [acsa]
-    AUTHORIZATION [sonda];
+    AUTHORIZATION [acsa];
 
