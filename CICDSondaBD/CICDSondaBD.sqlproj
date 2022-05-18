@@ -1629,7 +1629,6 @@
     </Build>
     <Build Include="Security\sonda.sql" />
     <Build Include="Security\sonda_1.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
     <Build Include="acsa\Functions\SONDA_FN_CAN_VOID_INVOICE.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
