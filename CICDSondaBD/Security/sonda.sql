@@ -1,4 +1,3 @@
 ﻿CREATE USER [sonda] FOR LOGIN [sonda]
-   -- WITH DEFAULT_SCHEMA = [dbo]
-   ;
+   WITH DEFAULT_SCHEMA = [dbo];
 
