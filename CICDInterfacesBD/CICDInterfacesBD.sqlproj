@@ -255,7 +255,6 @@
     <Build Include="Security\sonda.sql" />
     <Build Include="Security\sonda_1.sql" />
     <Build Include="Security\ACSAR.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Functions\FUNC_REMOVE_SPECIAL_CHARS_BK.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
