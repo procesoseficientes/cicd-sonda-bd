@@ -5,7 +5,7 @@ RETURNS varchar(255)
 AS
 BEGIN
   DECLARE @Respuesta varchar(255)
-  SET @Respuesta = [$(CICDSondaBD)].dbo.FUNC_REMOVE_SPECIAL_CHARS(@Cadena)
+  SET @Respuesta = dbo.FUNC_REMOVE_SPECIAL_CHARS(@Cadena)
   return @Respuesta
 END
 
