@@ -88,7 +88,11 @@ AS
 				,MAX([i].[SKU_DESCRIPTION]) as [SKU_NAME]
 			--,i.SKU_DESCRIPTION NombreHijo				 		
 				,0 AS [SKU_PRICE]--includes sales tax --Para obtener el precio del sku reemplazar el 0 por p.COST
-				,[s].[HANDLE_SERIAL_NUMBER] AS [REQUERIES_SERIE]
+				,CASE [s].[HANDLE_SERIAL_NUMBER]
+				WHEN 'S' THEN 1
+				WHEN 'N' THEN 0
+				ELSE 0
+				END AS [REQUERIES_SERIE]
 				,0 AS [IS_KIT]
 				,SUM([i].[ON_HAND]) AS [ON_HAND]
 				,@Warehouse AS [ROUTE_ID]
