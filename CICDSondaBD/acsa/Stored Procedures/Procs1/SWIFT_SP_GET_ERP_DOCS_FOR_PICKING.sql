@@ -13,7 +13,7 @@
 
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC acsa.SWIFT_SP_GET_ERP_DOCS_FOR_PICKING

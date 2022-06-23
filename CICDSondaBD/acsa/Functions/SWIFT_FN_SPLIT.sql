@@ -4,7 +4,7 @@
 -- Description:			Funcion que genera una tabla de un split del caracter indicado
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         SELECT * FROM [acsa].[SWIFT_FN_SPLIT]('A|B|C|D','|')

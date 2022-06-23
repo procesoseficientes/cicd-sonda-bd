@@ -6,7 +6,7 @@
 /*
 -- DROP FUNCTION [acsa].[SWIFT_FN_VALIDATE_STOCK_INVENTORY_BY_WS_AND_SKU]
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SWIFT_SP_VALIDATE_STOCK_INVENTORY_BY_WS_AND_SKU]			@CODE_WAREHOUSE = 'BODEGA_CENTRAL' ,@CODE_SKU = '100003' ,@QTY = '4'

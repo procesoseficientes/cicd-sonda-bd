@@ -5,7 +5,7 @@
 
 /*
 -- Ejemplo de Ejecucion:
-		USE [SWIFT_EXPRESS_R]
+		USE [$(CICDSondaBD)]
 		EXEC [acsa].[SONDA_SP_VALIDATE_DOCUMENTS_IS_POSTED]] @XML = '
 		<Data>
 			<documents>

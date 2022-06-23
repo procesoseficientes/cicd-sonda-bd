@@ -1,7 +1,7 @@
 ﻿-- =============================================================================
 -- AUTHOR:		denis.villagrán
 -- CREATE DATE:	2019-10-24 14:41:22
--- DATABASE:	SWIFT_EXPRESS_R
+-- DATABASE:	$(CICDSondaBD)
 -- DESCRIPTION:	SP que inserta tareas a la tabla SWIFT_TASK a partir de un xml
 -- =============================================================================
 /*

@@ -15,7 +15,7 @@
 -- Ejemplo de Ejecucion:
 				exec [acsa].SONDA_SP_GENERATE_ROUTE_PLAN
 				--
-				exec SWIFT_EXPRESS_R.[acsa].SONDA_SP_GENERATE_ROUTE_PLAN @CODE_FREQUENCY_OLD = '' ,@CODE_FREQUENCY_NEW = ''
+				exec $(CICDSondaBD).[acsa].SONDA_SP_GENERATE_ROUTE_PLAN @CODE_FREQUENCY_OLD = '' ,@CODE_FREQUENCY_NEW = ''
 				--
 				exec [acsa].SONDA_SP_GENERATE_ROUTE_PLAN @CODE_FREQUENCY_NEW = '00111101SALE001'
 */
@@ -49,21 +49,21 @@ BEGIN
     AND @CODE_FREQUENCY_NEW IS NULL
     )
   BEGIN
-    TRUNCATE TABLE  SWIFT_EXPRESS_R.[acsa].[SONDA_ROUTE_PLAN];
+    TRUNCATE TABLE  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN];
     --
-    DELETE FROM  SWIFT_EXPRESS_R.[acsa].[SWIFT_TASKS]
+    DELETE FROM  $(CICDSondaBD).[acsa].[SWIFT_TASKS]
     WHERE [ASSIGNED_BY] = 'Proceso diario'
       AND [TASK_DATE] = CONVERT(DATE, GETDATE());
   END;
   ELSE
   BEGIN
-    DELETE FROM  SWIFT_EXPRESS_R.[acsa].[SWIFT_TASKS]
+    DELETE FROM  $(CICDSondaBD).[acsa].[SWIFT_TASKS]
     WHERE [ASSIGNED_BY] = 'Proceso diario'
       AND [TASK_DATE] = CONVERT(DATE, GETDATE())
       AND [TASK_STATUS] = 'ASSIGNED'
       AND [TASK_ID] IN (SELECT
           [TASK_ID]
-        FROM  SWIFT_EXPRESS_R.[acsa].[SONDA_ROUTE_PLAN]
+        FROM  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN]
         WHERE [CODE_FREQUENCY] = @CODE_FREQUENCY_OLD);
     --
     DELETE [acsa].[SONDA_ROUTE_PLAN]
@@ -77,7 +77,7 @@ BEGIN
   DECLARE @DATE DATETIME = GETDATE();
   --
   INSERT INTO [#frecuenciaDia]
-  EXEC  SWIFT_EXPRESS_R.[acsa].[SWIFT_SP_GET_FREQUENCY_X_TASK] @DATE = @DATE
+  EXEC  $(CICDSondaBD).[acsa].[SWIFT_SP_GET_FREQUENCY_X_TASK] @DATE = @DATE
                                               ,@CODE_FREQUENCY = NULL;
   --
   SELECT DISTINCT
@@ -110,7 +110,7 @@ BEGIN
   -- -----------------------------------------------------------------
   -- Inserta en la tabla SWIFT_TASKS
   -- -----------------------------------------------------------------
-  INSERT INTO SWIFT_EXPRESS_R.[acsa].[SWIFT_TASKS] ([TASK_TYPE]
+  INSERT INTO $(CICDSondaBD).[acsa].[SWIFT_TASKS] ([TASK_TYPE]
   , [TASK_DATE]
   , [SCHEDULE_FOR]
   , [CREATED_STAMP]
@@ -188,7 +188,7 @@ BEGIN
   -- -----------------------------------------------------------------
   -- Inserta en la tabla SONDA_ROUTE_PLAN
   -- -----------------------------------------------------------------
-  INSERT INTO  SWIFT_EXPRESS_R.[acsa].[SONDA_ROUTE_PLAN] ([TASK_ID]
+  INSERT INTO  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN] ([TASK_ID]
   , [CODE_FREQUENCY]
   , [SCHEDULE_FOR]
   , [ASSIGNED_BY]
@@ -244,7 +244,7 @@ BEGIN
      ,1
      ,'BY_CALENDAR'
     FROM [#frecuencia] [F]
-    INNER JOIN  SWIFT_EXPRESS_R.[acsa].[SWIFT_TASKS] [T]
+    INNER JOIN  $(CICDSondaBD).[acsa].[SWIFT_TASKS] [T]
       ON (
       [T].[ASSIGEND_TO] = [F].[LOGIN]
       AND [T].[COSTUMER_CODE] = [F].[CODE_CUSTOMER]

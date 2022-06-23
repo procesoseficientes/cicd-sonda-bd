@@ -403,7 +403,7 @@ END
 -- -----------------------------------------------------------------------------
 -- backup sp 
 -- -----------------------------------------------------------------------------
---USE [SWIFT_EXPRESS_R]
+--USE [$(CICDSondaBD)]
 --GO
 --/****** Object:  StoredProcedure [acsa].[SONDA_SP_INSERT_SCOUTING]    Script Date: 4/26/2021 4:24:16 PM ******/
 --SET ANSI_NULLS ON

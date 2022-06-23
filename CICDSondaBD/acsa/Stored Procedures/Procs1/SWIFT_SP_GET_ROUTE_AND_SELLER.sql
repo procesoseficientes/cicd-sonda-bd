@@ -8,7 +8,7 @@
 --          Se agrego el left join con la tabla de vehiculoas, para obtener el vehiuclo asociado del usuario.
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SWIFT_SP_GET_ROUTE_AND_SELLER]
@@ -30,7 +30,7 @@ BEGIN
 	INNER JOIN [acsa].[SWIFT_ROUTES] R ON (U.SELLER_ROUTE = R.CODE_ROUTE)
 	INNER JOIN [acsa].[SWIFT_VIEW_ALL_SELLERS] S ON (U.RELATED_SELLER = S.SELLER_CODE)
   LEFT JOIN [acsa].SWIFT_VEHICLE_X_USER VU ON (U.LOGIN = VU.LOGIN)
-  LEFT JOIN SWIFT_EXPRESS_R.[acsa].SWIFT_VEHICLES V ON (VU.VEHICLE = V.VEHICLE)
+  LEFT JOIN $(CICDSondaBD).[acsa].SWIFT_VEHICLES V ON (VU.VEHICLE = V.VEHICLE)
 	WHERE @LOGIN IS NULL OR U.LOGIN = @LOGIN
 END
 

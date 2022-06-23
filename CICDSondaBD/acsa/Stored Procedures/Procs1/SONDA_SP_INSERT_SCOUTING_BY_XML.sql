@@ -10,7 +10,7 @@
 -- =============================================
 -- Author: joel.delcompare      
 -- Create date: 2017-12-22 12:30:05
--- Database:    SWIFT_EXPRESS_R
+-- Database:    $(CICDSondaBD)
 -- Description: Se retorna el gps... 
 -- =============================================
 

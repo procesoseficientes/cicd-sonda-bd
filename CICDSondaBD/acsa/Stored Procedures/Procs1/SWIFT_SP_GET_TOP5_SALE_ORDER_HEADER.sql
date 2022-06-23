@@ -48,7 +48,7 @@
 					-- Se agrego el parametro @OWNER, este se envia como INTERFACE_OWNER y se filtran los vendedores que tengan el mismo OWNER o que el OWNER sea NULL
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SWIFT_SP_GET_TOP5_SALE_ORDER_HEADER]

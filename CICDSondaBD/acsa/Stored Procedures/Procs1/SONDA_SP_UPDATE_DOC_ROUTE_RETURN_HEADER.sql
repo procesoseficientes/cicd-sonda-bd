@@ -21,7 +21,7 @@
 /*
 Ejemplo de Ejecucion:
 
-USE SWIFT_EXPRESS_R
+USE $(CICDSondaBD)
 GO
 
 DECLARE @RC int

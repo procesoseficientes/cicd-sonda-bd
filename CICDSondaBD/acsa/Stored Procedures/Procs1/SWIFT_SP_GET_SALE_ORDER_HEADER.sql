@@ -17,7 +17,7 @@
 
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SWIFT_SP_GET_SALE_ORDER_HEADER]

@@ -103,7 +103,7 @@ AS
 				,MAX([s].[VAT_CODE]) AS [TAX_CODE]
 				,'Manual' as [CODE_PACK_UNIT_STOCK]
 		    FROM
-				  [SWIFT_EXPRESS_R].[acsa].[SWIFT_INVENTORY] [i]
+				  [acsa].[SWIFT_INVENTORY] [i]
 			INNER JOIN [acsa].[SWIFT_VIEW_ALL_SKU] [s]
 			ON	([s].[CODE_SKU] = [i].[SKU] COLLATE DATABASE_DEFAULT)
 			--INNER JOIN [acsa].[SWIFT_PRICE_LIST_BY_SKU] [p]

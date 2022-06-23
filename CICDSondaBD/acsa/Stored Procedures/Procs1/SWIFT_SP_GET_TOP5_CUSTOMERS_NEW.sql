@@ -36,7 +36,7 @@
 					-- Se cambia el origen de datos a la vista de scoutings, se agrega columan IS_FROM
 /*
 -- Ejemplo de Ejecucion:
-USE SWIFT_EXPRESS_R
+USE $(CICDSondaBD)
 GO
 
 DECLARE @RC int

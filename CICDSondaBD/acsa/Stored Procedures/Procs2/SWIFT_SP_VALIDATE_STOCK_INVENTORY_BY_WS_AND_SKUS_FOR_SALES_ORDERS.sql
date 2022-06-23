@@ -5,7 +5,7 @@
 
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SWIFT_SP_VALIDATE_STOCK_INVENTORY_BY_WS_AND_SKUS_FOR_SALES_ORDERS]

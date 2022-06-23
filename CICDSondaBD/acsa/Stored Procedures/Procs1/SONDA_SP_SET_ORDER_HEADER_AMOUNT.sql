@@ -5,7 +5,7 @@
 
 /*
 -- Ejemplo de Ejecucion:
-        USE SWIFT_EXPRESS_R
+        USE $(CICDSondaBD)
         GO
         --
         EXEC [acsa].[SONDA_SP_SET_ORDER_HEADER_AMOUNT]
