@@ -419,7 +419,7 @@ BEGIN
   -- ---------------------------
   -- Se actualiza el estado de las meteas que entran en progreso hoy.
   -- ---------------------------
-  UPDATE [GH]
+UPDATE [GH]
   SET [GH].[STATUS] =
                      CASE
                        WHEN (CAST([GH].[GOAL_DATE_FROM] AS DATE) <= CAST(GETDATE() AS DATE) AND
@@ -429,7 +429,7 @@ BEGIN
      ,[GH].[LAST_UPDATE] = GETDATE()
      ,[GH].[LAST_UPDATE_BY] = 'SYSTEM'
   FROM [acsa].[SWIFT_GOAL_HEADER] [GH]
-  WHERE [GH].[STATUS] = 'CREATED'
+  WHERE [GH].[STATUS] != 'FINISHED'
   AND (CAST([GH].[GOAL_DATE_FROM] AS DATE) <= CAST(GETDATE() AS DATE)
   AND CAST([GH].[GOAL_DATE_TO] AS DATE) >= CAST(GETDATE() AS DATE)
   OR CAST([GH].[GOAL_DATE_TO] AS DATE) < DATEADD(DAY, -1, CAST(GETDATE() AS DATE)))
