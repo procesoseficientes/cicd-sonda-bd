@@ -124,7 +124,7 @@ BEGIN
 	-- Muestra el resultado
 	-- ------------------------------------------------------------------------------------
 	SET @QUERY = N'
-	SELECT
+	SELECT DISTINCT
 		[T].[TASK_ID]
 		,[T].[TASK_TYPE]
 		,[T].[TASK_TYPE_DESCIPTION]
