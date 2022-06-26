@@ -118,13 +118,16 @@ BEGIN
 		AND [C].[CODE_CUSTOMER] IS NULL*/
 	--Temporal
 	INSERT INTO @CUSTOMER
-	SELECT 
-		[RP].[RELATED_CLIENT_CODE]
-		,[VC].[OWNER]
-	FROM [acsa].[SONDA_ROUTE_PLAN] [RP]
-	INNER JOIN [acsa].[SWIFT_VIEW_ALL_COSTUMER] [VC] ON ([VC].[CODE_CUSTOMER] = [RP].[RELATED_CLIENT_CODE])
-	WHERE [RP].[CODE_ROUTE] = @CODE_ROUTE
-		AND [RP].[RELATED_CLIENT_CODE] NOT IN (SELECT [CODE_CUSTOMER] FROM @CUSTOMER)
+		SELECT
+			[RP].[RELATED_CLIENT_CODE]
+			,[VC].[OWNER]
+		FROM [acsa].[SONDA_ROUTE_PLAN] [RP]
+		INNER JOIN [acsa].[SWIFT_VIEW_ALL_COSTUMER] [VC]
+			ON ([VC].[CODE_CUSTOMER] = [RP].[RELATED_CLIENT_CODE])
+		LEFT JOIN @CUSTOMER [C]
+			ON ([C].[CODE_CUSTOMER] = [RP].[RELATED_CLIENT_CODE])
+		WHERE [RP].[CODE_ROUTE] = @CODE_ROUTE
+			AND [C].[CODE_CUSTOMER] IS NULL
 
 	-- ------------------------------------------------------------------------------------
 	-- Obtiene las listas de precios relacionadas a los clientes de la ruta
