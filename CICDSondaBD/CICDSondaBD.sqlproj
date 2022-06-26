@@ -6890,7 +6890,6 @@
     <Build Include="acsa\Sequences\ROUTE_SEQUENCE.sql" />
     <Build Include="acsa\Sequences\SALES_ORDER_NEGATIVE_SEQUENCE.sql" />
     <Build Include="acsa\Sequences\SCOUTING_CLIENT_SEQUENCE.sql" />
-    <Build Include="Security\Permissions.sql" />
     <Build Include="dbo\Tables\SWIFT_USER_ARIUM.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
