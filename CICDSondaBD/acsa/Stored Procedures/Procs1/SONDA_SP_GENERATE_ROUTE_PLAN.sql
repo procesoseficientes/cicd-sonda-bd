@@ -49,21 +49,21 @@ BEGIN
     AND @CODE_FREQUENCY_NEW IS NULL
     )
   BEGIN
-    TRUNCATE TABLE  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN];
+    TRUNCATE TABLE  [acsa].[SONDA_ROUTE_PLAN];
     --
-    DELETE FROM  $(CICDSondaBD).[acsa].[SWIFT_TASKS]
+    DELETE FROM  [acsa].[SWIFT_TASKS]
     WHERE [ASSIGNED_BY] = 'Proceso diario'
       AND [TASK_DATE] = CONVERT(DATE, GETDATE());
   END;
   ELSE
   BEGIN
-    DELETE FROM  $(CICDSondaBD).[acsa].[SWIFT_TASKS]
+    DELETE FROM  [acsa].[SWIFT_TASKS]
     WHERE [ASSIGNED_BY] = 'Proceso diario'
       AND [TASK_DATE] = CONVERT(DATE, GETDATE())
       AND [TASK_STATUS] = 'ASSIGNED'
       AND [TASK_ID] IN (SELECT
           [TASK_ID]
-        FROM  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN]
+        FROM  [acsa].[SONDA_ROUTE_PLAN]
         WHERE [CODE_FREQUENCY] = @CODE_FREQUENCY_OLD);
     --
     DELETE [acsa].[SONDA_ROUTE_PLAN]
@@ -77,7 +77,7 @@ BEGIN
   DECLARE @DATE DATETIME = GETDATE();
   --
   INSERT INTO [#frecuenciaDia]
-  EXEC  $(CICDSondaBD).[acsa].[SWIFT_SP_GET_FREQUENCY_X_TASK] @DATE = @DATE
+  EXEC  [acsa].[SWIFT_SP_GET_FREQUENCY_X_TASK] @DATE = @DATE
                                               ,@CODE_FREQUENCY = NULL;
   --
   SELECT DISTINCT
@@ -110,7 +110,7 @@ BEGIN
   -- -----------------------------------------------------------------
   -- Inserta en la tabla SWIFT_TASKS
   -- -----------------------------------------------------------------
-  INSERT INTO $(CICDSondaBD).[acsa].[SWIFT_TASKS] ([TASK_TYPE]
+  INSERT INTO [acsa].[SWIFT_TASKS] ([TASK_TYPE]
   , [TASK_DATE]
   , [SCHEDULE_FOR]
   , [CREATED_STAMP]
@@ -188,7 +188,7 @@ BEGIN
   -- -----------------------------------------------------------------
   -- Inserta en la tabla SONDA_ROUTE_PLAN
   -- -----------------------------------------------------------------
-  INSERT INTO  $(CICDSondaBD).[acsa].[SONDA_ROUTE_PLAN] ([TASK_ID]
+  INSERT INTO  [acsa].[SONDA_ROUTE_PLAN] ([TASK_ID]
   , [CODE_FREQUENCY]
   , [SCHEDULE_FOR]
   , [ASSIGNED_BY]
@@ -244,7 +244,7 @@ BEGIN
      ,1
      ,'BY_CALENDAR'
     FROM [#frecuencia] [F]
-    INNER JOIN  $(CICDSondaBD).[acsa].[SWIFT_TASKS] [T]
+    INNER JOIN  [acsa].[SWIFT_TASKS] [T]
       ON (
       [T].[ASSIGEND_TO] = [F].[LOGIN]
       AND [T].[COSTUMER_CODE] = [F].[CODE_CUSTOMER]
