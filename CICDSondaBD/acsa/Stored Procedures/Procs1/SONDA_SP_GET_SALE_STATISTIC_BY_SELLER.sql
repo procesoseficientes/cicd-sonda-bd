@@ -55,7 +55,7 @@ AS
 	-- Se obtiene la estadistica del vendedor
 	-- --------------------------------------------------------------------------------------------------------------------------------------------
 			SELECT
-				[GOAL_HEADER_ID]
+				s.[GOAL_HEADER_ID]
 				,(
 					SELECT TOP 1
 						[T].[NAME_TEAM]
