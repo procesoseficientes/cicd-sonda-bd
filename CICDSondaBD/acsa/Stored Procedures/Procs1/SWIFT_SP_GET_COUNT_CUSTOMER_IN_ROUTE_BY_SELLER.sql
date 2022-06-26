@@ -74,7 +74,7 @@ BEGIN
     SELECT DISTINCT
            [F].[CODE_ROUTE],
            [F].[TYPE_TASK],
-       --    [F].[FREQUENCY_WEEKS],
+           [F].[FREQUENCY_WEEKS],
            SUM([F].[SUNDAY]) [SUNDAY],
            SUM([F].[MONDAY]) [MONDAY],
            SUM([F].[TUESDAY]) [TUESDAY],
@@ -90,10 +90,10 @@ BEGIN
             ON ([TF].[ID_FREQUENCY] = [FC].[ID_FREQUENCY])
     GROUP BY [F].[CODE_ROUTE],
              [F].[TYPE_TASK]
-            -- [F].[FREQUENCY_WEEKS]
+             [F].[FREQUENCY_WEEKS]
     ORDER BY [F].[CODE_ROUTE],
              [F].[TYPE_TASK]
-            -- [F].[FREQUENCY_WEEKS];
+             [F].[FREQUENCY_WEEKS];
 
 
     -- ------------------------------------------------------------------------------------
