@@ -1,3 +1,4 @@
 ﻿CREATE SCHEMA [acsa]
-    AUTHORIZATION [acsa];
+    --AUTHORIZATION [dbo]
+    ;
 
