@@ -147,11 +147,11 @@
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="CICDInterfacesBD">
-      <DefaultValue>SWIFT_INTERFACES_A</DefaultValue>
+      <DefaultValue>SWIFT_INTERFACES</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="CICDSondaBD">
-      <DefaultValue>SWIFT_EXPRESS_A</DefaultValue>
+      <DefaultValue>SWIFT_EXPRESS</DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
     </SqlCmdVariable>
   </ItemGroup>
