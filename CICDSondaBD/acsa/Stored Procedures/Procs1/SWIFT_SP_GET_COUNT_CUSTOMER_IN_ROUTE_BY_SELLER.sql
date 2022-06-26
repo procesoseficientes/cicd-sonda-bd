@@ -57,12 +57,12 @@ BEGIN
     -- ------------------------------------------------------------------------------------
     -- Obtiene las frecuencias
     -- ------------------------------------------------------------------------------------
-    SELECT DISTINCT
-           [PBR].[ID_FREQUENCY]
+       SELECT DISTINCT
+           f.[ID_FREQUENCY]
     INTO [#FREQUENCY]
-    FROM [acsa].[SWIFT_POLYGON_BY_ROUTE] [PBR]
-        INNER JOIN [acsa].[SWIFT_ROUTES] [R]
-            ON ([R].[ROUTE] = [PBR].[ROUTE])
+    FROM acsa.[SWIFT_FREQUENCY] f
+        INNER JOIN acsa.[SWIFT_ROUTES] [R]
+            ON ([R].[CODE_ROUTE] = f.[CODE_ROUTE])
         INNER JOIN [#SELLER] [S]
             ON ([S].[SELLER_CODE] = [R].[SELLER_CODE])
         INNER JOIN [#ROUTE] [RUS]
@@ -74,7 +74,7 @@ BEGIN
     SELECT DISTINCT
            [F].[CODE_ROUTE],
            [F].[TYPE_TASK],
-           [F].[FREQUENCY_WEEKS],
+       --    [F].[FREQUENCY_WEEKS],
            SUM([F].[SUNDAY]) [SUNDAY],
            SUM([F].[MONDAY]) [MONDAY],
            SUM([F].[TUESDAY]) [TUESDAY],
@@ -83,17 +83,17 @@ BEGIN
            SUM([F].[FRIDAY]) [FRIDAY],
            SUM([F].[SATURDAY]) [SATURDAY]
     INTO [#CUSTOMER_BY_DAY]
-    FROM [acsa].[SWIFT_FREQUENCY] [F]
-        INNER JOIN [acsa].[SWIFT_FREQUENCY_X_CUSTOMER] [FC]
+    FROM acsa.[SWIFT_FREQUENCY_X_CUSTOMER] [FC] 
+        INNER JOIN acsa.[SWIFT_FREQUENCY] [F]
             ON ([FC].[ID_FREQUENCY] = [F].[ID_FREQUENCY])
         INNER JOIN [#FREQUENCY] [TF]
-            ON ([TF].[ID_FREQUENCY] = [F].[ID_FREQUENCY])
+            ON ([TF].[ID_FREQUENCY] = [FC].[ID_FREQUENCY])
     GROUP BY [F].[CODE_ROUTE],
-             [F].[TYPE_TASK],
-             [F].[FREQUENCY_WEEKS]
+             [F].[TYPE_TASK]
+            -- [F].[FREQUENCY_WEEKS]
     ORDER BY [F].[CODE_ROUTE],
-             [F].[TYPE_TASK],
-             [F].[FREQUENCY_WEEKS];
+             [F].[TYPE_TASK]
+            -- [F].[FREQUENCY_WEEKS];
 
 
     -- ------------------------------------------------------------------------------------
@@ -111,8 +111,8 @@ BEGIN
                    'Frecuencia Unica'
            END [POLYGON_TYPE]
     INTO [#INFO]
-    FROM [acsa].[SWIFT_POLYGON_BY_ROUTE] [PBR]
-        INNER JOIN [acsa].[SWIFT_ROUTES] [R]
+    FROM acsa.[SWIFT_POLYGON_BY_ROUTE] [PBR]
+        INNER JOIN ACSA.[SWIFT_ROUTES] [R]
             ON ([R].[ROUTE] = [PBR].[ROUTE])
         INNER JOIN [#SELLER] [S]
             ON ([S].[SELLER_CODE] = [R].[SELLER_CODE])
@@ -128,7 +128,7 @@ BEGIN
            [I].[CODE_ROUTE],
            [I].[NAME_ROUTE],
            [CBD].[TYPE_TASK], --ISNULL([CBD].[TYPE_TASK],'NA') [TYPE_TASK]
-           ISNULL([CBD].[FREQUENCY_WEEKS], 0) [FREQUENCY_WEEKS],
+           ISNULL(2, 0) [FREQUENCY_WEEKS],
            ISNULL([CBD].[SUNDAY], 0) [SUNDAY],
            ISNULL([CBD].[MONDAY], 0) [MONDAY],
            ISNULL([CBD].[TUESDAY], 0) [TUESDAY],
