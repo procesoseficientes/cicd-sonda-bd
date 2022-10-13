@@ -103,7 +103,7 @@
         exec [acsa].[SWIFT_SP_GET_CUSTUMER_FOR_SCOUTING] @CODE_ROUTE = 'RP-01'
 */
 -- =============================================
-CREATE PROCEDURE [acsa].[SWIFT_SP_GET_CUSTUMER_FOR_SCOUTING]
+ALTER PROCEDURE [acsa].[SWIFT_SP_GET_CUSTUMER_FOR_SCOUTING]
 (@CODE_ROUTE VARCHAR(50))
 AS
 BEGIN
@@ -248,10 +248,13 @@ BEGIN
     -- ------------------------------------------------------------------------------------
     -- Obtiene la lista de precios por defecto de la ruta
     -- ------------------------------------------------------------------------------------
-    /*SELECT @DEFAULT_PRICE_LIST = ISNULL([CODE_PRICE_LIST], [acsa].[SWIFT_FN_GET_PARAMETER] ('ERP_HARDCODE_VALUES','PRICE_LIST'))
+--SELECT @DEFAULT_PRICE_LIST = [CODE_PRICE_LIST]
+--  FROM [acsa].[USERS]
+--  WHERE [SELLER_ROUTE] = @CODE_ROUTE
+
+   SELECT @DEFAULT_PRICE_LIST = ISNULL([CODE_PRICE_LIST], [acsa].[SWIFT_FN_GET_PARAMETER] ('ERP_HARDCODE_VALUES','PRICE_LIST'))
   FROM [acsa].[USERS]
-  WHERE [SELLER_ROUTE] = @CODE_ROUTE*/
-    SELECT @DEFAULT_PRICE_LIST = '-1';
+  WHERE [SELLER_ROUTE] = @CODE_ROUTE
 
     -- ------------------------------------------------------------------------------------
     -- Obtiene las listas de descuentos asociadas a la ruta
@@ -352,7 +355,7 @@ BEGIN
         [OUTSTANDING_BALANCE],
         [LAST_PURCHASE_DATE]
     )
-    SELECT [C].[CODE_CUSTOMER],
+    SELECT  [C].[CODE_CUSTOMER],
            [dbo].[FUNC_REMOVE_SPECIAL_CHARS]([C].[NAME_CUSTOMER]) AS [NAME_CUSTOMER],
            [C].[TAX_ID_NUMBER],
            REPLACE([dbo].[FUNC_REMOVE_SPECIAL_CHARS](COALESCE([C].[ADRESS_CUSTOMER], '')), '"', '') AS [ADRESS_CUSTOMER],
@@ -528,7 +531,7 @@ BEGIN
                GROUP BY [IH].[CODE_CUSTOMER]
                ORDER BY [IH].[CODE_CUSTOMER]
            ) AS [LAST_PURCHASE_DATE]
-        FROM [$(CICDSondaBD)].[acsa].[SWIFT_VIEW_ALL_COSTUMER] [VAC]
+        FROM [SWIFT_EXPRESS].[acsa].[SWIFT_VIEW_ALL_COSTUMER] [VAC]
         INNER JOIN [acsa].[SONDA_ROUTE_PLAN] [RP]
             ON ([VAC].[CODE_CUSTOMER]COLLATE DATABASE_DEFAULT = [RP].[RELATED_CLIENT_CODE]COLLATE DATABASE_DEFAULT)
         LEFT JOIN [#DISCOUNT_LIST] [DLC]
