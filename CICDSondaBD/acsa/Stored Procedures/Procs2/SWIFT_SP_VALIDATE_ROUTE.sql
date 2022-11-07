@@ -69,6 +69,16 @@
 -- Historia/Bug:		Product Backlog Item 33218: Configuración de Frases y Escenarios
 -- Descripcion: 		12/2/2019 - Se agrega validacion para Frases y Escenarios FEL en rutas de venta directa, SI Y SOLO SI la ruta utiliza FEL
 
+-- -----------------
+--Modificación:			2022.10.28
+--Autor:				Elder Lucas
+--Descripción:			Validación de versión de SONDA
+
+-- -----------------
+--Modificación:			2022.11.01
+--Autor:				denis.arango
+--Descripción:			Validación para dos versiones de SONDA
+
 /*
 -- Ejemplo de Ejecucion:				
 				--
@@ -514,7 +524,30 @@ BEGIN
 
 
 	print '14'
+
+	-- ----------------------------------------------------------------------------------------------------------------
+    -- Valida la versión de SONDA
     -- ----------------------------------------------------------------------------------------------------------------
+    
+		DECLARE @SONDA_PRESALES_VERSION VARCHAR(25),
+				@SONDA_PRESALES_VERSION_QA VARCHAR(25)
+
+		SELECT TOP 1 @SONDA_PRESALES_VERSION = VALUE
+		FROM ACSA.SWIFT_PARAMETER WHERE PARAMETER_ID = 'SONDA_PRESALES_VERSION'
+
+		SELECT TOP 1 @SONDA_PRESALES_VERSION_QA = VALUE
+		FROM ACSA.SWIFT_PARAMETER WHERE PARAMETER_ID = 'SONDA_PRESALES_VERSION_QA'
+
+		IF (@SONDA_PRESALES_VERSION = (SELECT SONDA_CORE_VERSION FROM acsa.USERS WHERE [LOGIN] = @USER)
+			OR @SONDA_PRESALES_VERSION_QA = (SELECT SONDA_CORE_VERSION FROM acsa.USERS WHERE [LOGIN] = @USER))
+        BEGIN
+			PRINT '15'
+        END;
+		ELSE 
+		BEGIN
+			SET @RESULT = @RESULT + 'Actualice a la version para produccion: ' + @SONDA_PRESALES_VERSION + ' o para pruebas: ' + @SONDA_PRESALES_VERSION_QA
+		END;
+  --  -- ----------------------------------------------------------------------------------------------------------------
     -- Valida si la ruta tiene la regla de FacturarAunConFacturasVencidas para que exista una secuencia de documentos
     -- ----------------------------------------------------------------------------------------------------------------
     DECLARE @RULE_EXISTS INT = 0,
@@ -553,7 +586,7 @@ BEGIN
     END;
 
 
-	print '15'
+	print '16'
     -- -------------------------------------------------------------------------------------------------
     -- Valida si tiene micro encuestas asignadas y si las hay, valida que tenga secuencia de documentos
     -- -------------------------------------------------------------------------------------------------
@@ -582,7 +615,7 @@ BEGIN
 
 
 
-	print '16'
+	print '17'
     -- -----------------------------------------------------------------------------------------------
     -- Valida si el tipo del usuario es de venta, que use FEL y que exista secuencia de documentos con  
     -- disponibilidad                                                                                   
@@ -643,7 +676,7 @@ BEGIN
     END;
 
 
-	print '17'
+	print '18'
     -- ------------------------------------------------------------------------------------
     -- Valida si hay algun resultado sino se manda Exito
     -- ------------------------------------------------------------------------------------
@@ -654,3 +687,4 @@ BEGIN
     --
     SELECT @RESULT AS [RESULT];
 END;
+GO
