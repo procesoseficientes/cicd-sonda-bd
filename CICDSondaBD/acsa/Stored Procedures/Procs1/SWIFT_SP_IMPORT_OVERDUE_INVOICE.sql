@@ -1,4 +1,4 @@
-﻿-- =============================================
+-- =============================================
 -- Autor:				diego.as
 -- Fecha de Creacion: 	4/29/2018 @ G-FORCE TEAM - Sprint CASTOR
 -- Description:			SP que importa las facturas vencidas de los clientes
@@ -15,10 +15,10 @@
 
 /*
 -- Ejemplo de Ejecucion:
-      		EXEC [acsa].[SWIFT_SP_IMPORT_OVERDUE_INVOICE]
+      		EXEC [diprocom].[SWIFT_SP_IMPORT_OVERDUE_INVOICE]
 */
 -- =============================================
-CREATE PROCEDURE [acsa].[SWIFT_SP_IMPORT_OVERDUE_INVOICE]
+ALTER PROCEDURE [DIPROCOM].[SWIFT_SP_IMPORT_OVERDUE_INVOICE]
 AS
 BEGIN
     --
@@ -72,7 +72,7 @@ BEGIN
         -- -------------------------------------------------------------
         -- Limpiamos la tabla
         -- -------------------------------------------------------------
-        TRUNCATE TABLE [acsa].[SWIFT_OVERDUE_INVOICE_BY_CUSTOMER];
+        TRUNCATE TABLE [diprocom].[SWIFT_OVERDUE_INVOICE_BY_CUSTOMER];
 
         -- -------------------------------------------------------------
         -- Obtenemos los clientes
@@ -82,7 +82,7 @@ BEGIN
             [CODE_CUSTOMER]
         )
         SELECT [CODE_CUSTOMER]
-        FROM [acsa].[SWIFT_VIEW_ALL_COSTUMER];
+        FROM [diprocom].[SWIFT_VIEW_ALL_COSTUMER];
 
         -- ------------------------------------------------------------
         -- Armamos y Ejecutamos la consulta
@@ -107,7 +107,7 @@ BEGIN
 							,INV.fecha_vencimiento as DUE_DATE
 							,INV.monto_original as TOTAL_AMOUNT
 							,INV.saldo as PENDING_TO_PAID
-						FROM SWIFT_INTERFACES_ONLINE_A.ACSA.ERP_VIEW_INVOICE_PENDING_TO_PAY AS INV
+						FROM SWIFT_INTERFACES_ONLINE_A.diprocom.ERP_VIEW_INVOICE_PENDING_TO_PAY AS INV
 						where GETDATE() > INV.fecha_vencimiento
 						AND INV.monto_original > 0
 				) AS IV
@@ -119,7 +119,7 @@ BEGIN
         -- -------------------------------------------------------------------
         -- Insertamos en nuestra tabla que almacena toda la informacion
         -- -------------------------------------------------------------------
-        INSERT INTO [acsa].[SWIFT_OVERDUE_INVOICE_BY_CUSTOMER]
+        INSERT INTO [diprocom].[SWIFT_OVERDUE_INVOICE_BY_CUSTOMER]
         (
             [INVOICE_ID],
             [DOC_ENTRY],
@@ -160,7 +160,7 @@ BEGIN
         END;
 
         --
-        EXEC [acsa].[SONDA_SP_INSERT_SONDA_SERVER_ERROR_LOG] @CODE_ROUTE = '',                                  -- varchar(50)
+        EXEC [diprocom].[SONDA_SP_INSERT_SONDA_SERVER_ERROR_LOG] @CODE_ROUTE = '',                                  -- varchar(50)
                                                               @LOGIN = '',                                       -- varchar(50)
                                                               @SOURCE_ERROR = 'SWIFT_SP_IMPORT_OVERDUE_INVOICE', -- varchar(250)
                                                               @DOC_RESOLUTION = '',                              -- varchar(100)
