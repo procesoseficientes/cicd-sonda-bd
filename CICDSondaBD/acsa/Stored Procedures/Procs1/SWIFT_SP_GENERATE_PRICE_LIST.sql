@@ -13,7 +13,7 @@
 					@CODE_ROUTE ='RP-27'
 */
 -- =============================================
-ALTER PROCEDURE [acsa].[SWIFT_SP_GENERATE_PRICE_LIST](
+CREATE PROCEDURE [acsa].[SWIFT_SP_GENERATE_PRICE_LIST](
 	@CODE_ROUTE VARCHAR(50)
 )
 AS
