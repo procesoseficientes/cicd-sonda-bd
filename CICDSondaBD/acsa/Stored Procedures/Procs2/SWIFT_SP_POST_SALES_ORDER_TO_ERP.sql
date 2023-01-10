@@ -30,8 +30,9 @@ BEGIN
 		  AND ISNULL(ssoh.IS_VOID, 0) = 0
 		  AND ISNULL(ssoh.IS_DRAFT, 0) = 0
 		  AND [ssoh].[IS_READY_TO_SEND] = 1
+		  AND [ssoh].[total_amount] > 0
 		  AND [ssoh].[POSTED_DATETIME] >= FORMAT(GETDATE()-10,'yyyyMMdd')
-		  	
+  	
 	WHILE EXISTS (SELECT TOP 1
           1
         FROM #SALES_ORDER)

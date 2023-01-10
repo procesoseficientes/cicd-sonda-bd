@@ -274,6 +274,7 @@ BEGIN
       )
     WHERE [SOH].[SALES_ORDER_ID] > 0
     AND [SOH].[IS_READY_TO_SEND] = 1
+    AND [SOH].[TOTAL_AMOUNT] > 0
     GROUP BY [SOH].[SALES_ORDER_ID]
 
   --------------------------------------------------------
