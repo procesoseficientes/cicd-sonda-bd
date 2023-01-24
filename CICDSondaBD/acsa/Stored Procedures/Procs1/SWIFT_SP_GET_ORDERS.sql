@@ -118,6 +118,7 @@ AS
                 FROM    [acsa].[SONDA_SALES_ORDER_HEADER] [S] WITH ( NOLOCK )
                 WHERE   [S].[SALES_ORDER_ID] > 0
                         AND [S].[IS_READY_TO_SEND] = 1
+                        AND [S].[TOTAL_AMOUNT] > 0
                         AND CAST([S].[POSTED_DATETIME] AS DATE) >= @DTBEGIN
                         AND CAST([S].[POSTED_DATETIME] AS DATE) <= @DTEND;
 
